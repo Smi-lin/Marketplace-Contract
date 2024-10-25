@@ -28,7 +28,7 @@ contract MarketPlace {
         owner = msg.sender;
     }
 
-    function listOrder(string memory _name, uint16 _price) external {
+    function listItem(string memory _name, uint16 _price) external {
         require(msg.sender != address(0), "Zero address is not allowed");
 
         Item memory newItem;
@@ -41,7 +41,7 @@ contract MarketPlace {
         emit ItemListed(_name, _price);
     }
 
-    function buyOrder(uint8 _index) external {
+    function purchaseItem(uint8 _index) external {
         require(msg.sender != address(0), "Zero address is not allowed");
         require(_index < items.length, "Out of bound!");
         require(!isSoldOut[_index], "Item already sold out");
